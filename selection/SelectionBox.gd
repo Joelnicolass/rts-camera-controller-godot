@@ -46,7 +46,12 @@ func _select_units_in_box(rect: Rect2):
 	var units = get_tree().get_nodes_in_group("units")
 	var selected_units: Array[Unit] = []
 	for unit in units:
+		if unit.team != Constants.PLAYER_TEAM:
+			continue
 		var screen_pos = camera.unproject_position(unit.global_position)
 		if rect.has_point(screen_pos):
 			selected_units.append(unit)
 	SelectionEvents.on_request_selection.emit(selected_units)
+
+func _filter_units_by_team(units: Array[Unit], team: int) -> Array[Unit]:
+	return units.filter(func(unit: Unit) -> bool: return unit.team == team)

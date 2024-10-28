@@ -110,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="MainCamera" type="Camera3D" parent="RtsCameraController/Elevation"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23517e-08, 7.75967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.59193, 12.3516)
 
 [node name="SelectionManager" type="Node" parent="."]
 script = ExtResource("2_ioibh")
@@ -129,6 +129,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_cnayh")
 script = ExtResource("4_nxl37")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000226893, 0, -0.000226893, 1, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_88rop")
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" groups=["terrain"]]
@@ -170,6 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40764, 0, 4.6427)
 
 [node name="NuevaUndiad2" parent="." instance=ExtResource("5_ji47i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96012, 2.39869, 7.37845)
+team = 1
 
 [node name="Unit10" parent="." instance=ExtResource("4_dvawi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55711, 3.7998e-07, 4.64937)

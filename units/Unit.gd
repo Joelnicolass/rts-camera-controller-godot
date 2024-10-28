@@ -8,6 +8,7 @@ const DISTANCE_STOP_THRESHOLD = 0.1
 
 @export var speed = 2
 @export var accel = 10
+@export var team: int
 
 func _ready() -> void:
 	nav.velocity_computed.connect(_on_nav_agent_velocity_computed)
@@ -31,11 +32,12 @@ func _move_towards_nav_target(delta: float) -> void:
 	nav.velocity = target_velocity
 
 func set_command(command: UnitCommand):
+	if team != Constants.PLAYER_TEAM: return
+	
 	if command.type == UnitCommand.Type.MOVE:
-		nav.target_position = command.target_pos
+			nav.target_position = command.target_pos
 	if command.type == UnitCommand.Type.ACTION:
 		if has_node("Action"):
-			# enviar posición global del objetivo y quein es el objetivo
 			get_node("Action").execute(command.target_obj, command.target_pos)
 
 func _on_nav_agent_velocity_computed(safe_velocity: Vector3) -> void:
