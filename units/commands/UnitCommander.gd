@@ -23,14 +23,14 @@ func _on_command_selected_units() -> void:
 		print("No target found to command units")
 		return
 	
-	_on_handle_units_command(selected_units, target_intersection.collider, 
+	_on_handle_units_command(selected_units, target_intersection.collider,
 		target_intersection.position)
 		
 func _on_handle_units_command(units: Array[Unit], target_obj: Node3D, target_pos: Vector3) -> void:
 	if target_obj.is_in_group("terrain"):
 		_handle_move_command(units, target_pos)
 	elif target_obj.is_in_group("units"):
-		_handle_attack_command(units, target_obj)
+		_handle_action_command(units, target_obj)
 		
 func _handle_move_command(units: Array[Unit], target_pos: Vector3) -> void:
 	var cmd = UnitCommand.new(UnitCommand.Type.MOVE, target_pos, null)
@@ -38,8 +38,8 @@ func _handle_move_command(units: Array[Unit], target_pos: Vector3) -> void:
 		unit.set_command(cmd)
 	UnitEvents.on_command_units.emit(units, cmd)
 
-func _handle_attack_command(units: Array[Unit], target_obj: Node3D) -> void:
-	var cmd = UnitCommand.new(UnitCommand.Type.ATTACK, target_obj.global_position, target_obj)
+func _handle_action_command(units: Array[Unit], target_obj: Node3D) -> void:
+	var cmd = UnitCommand.new(UnitCommand.Type.ACTION, target_obj.global_position, target_obj)
 	for unit in units:
 		unit.set_command(cmd)
 	UnitEvents.on_command_units.emit(units, cmd)

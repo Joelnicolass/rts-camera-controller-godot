@@ -1,6 +1,6 @@
 class_name UnitCommand
 
-enum Type {	MOVE, ATTACK }
+enum Type {MOVE, ACTION}
 
 var type: Type
 

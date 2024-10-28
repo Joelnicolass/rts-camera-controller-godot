@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://8807ydqdvh8e"]
+
+[ext_resource type="Script" path="res://units/Unit.gd" id="1_t407f"]
+[ext_resource type="Script" path="res://selection/UnitSelectable.gd" id="2_dcjhx"]
+[ext_resource type="Script" path="res://units/WithGravity.gd" id="3_axi4j"]
+[ext_resource type="Script" path="res://units/basic_attack.gd" id="4_eo1m3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibwr6"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_e3e17"]
+material = SubResource("StandardMaterial3D_ibwr6")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jocfr"]
+radius = 0.774279
+
+[node name="NuevaUndiad" type="CharacterBody3D" groups=["units"]]
+script = ExtResource("1_t407f")
+
+[node name="UnitSelectable" type="Node3D" parent="."]
+script = ExtResource("2_dcjhx")
+default_color = Color(1, 1, 1, 1)
+highlighted_color = Color(1, 1, 0.384314, 1)
+selected_color = Color(1, 0.541176, 0.32549, 1)
+
+[node name="CapsuleMesh" type="MeshInstance3D" parent="UnitSelectable"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577898, 0)
+mesh = SubResource("PrismMesh_e3e17")
+skeleton = NodePath("../../..")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641371, 0)
+shape = SubResource("SphereShape3D_jocfr")
+
+[node name="NavAgent" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 0.6
+
+[node name="WithGravity" type="Node" parent="."]
+script = ExtResource("3_axi4j")
+
+[node name="Action" type="Node" parent="."]
+script = ExtResource("4_eo1m3")

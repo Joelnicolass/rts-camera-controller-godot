@@ -33,8 +33,10 @@ func _move_towards_nav_target(delta: float) -> void:
 func set_command(command: UnitCommand):
 	if command.type == UnitCommand.Type.MOVE:
 		nav.target_position = command.target_pos
-	else:
-		print("Unhandled command: ", str(command.type))
+	if command.type == UnitCommand.Type.ACTION:
+		if has_node("Action"):
+			# enviar posición global del objetivo y quein es el objetivo
+			get_node("Action").execute(command.target_obj, command.target_pos)
 
 func _on_nav_agent_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
