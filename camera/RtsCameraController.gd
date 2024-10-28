@@ -60,11 +60,11 @@ func raycast_from_camera() -> Dictionary:
 	return space_state.intersect_ray(params)
 
 func _handle_camera_move_with_mouse(delta: float) -> void:
-	var screen_size: Vector2 = get_viewport().size
+	var screen_size: Vector2 = get_viewport().get_visible_rect().size
 	var mouse_pos = get_viewport().get_mouse_position()
 	var x_input = 0
 	var z_input = 0
-	
+
 	if mouse_pos.x < min_px_umbral:
 		x_input = -1
 	if mouse_pos.x > screen_size.x - max_px_umbral:
