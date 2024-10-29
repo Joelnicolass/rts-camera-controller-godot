@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Unit
 
-const DISTANCE_STOP_THRESHOLD = 0.1
+const DISTANCE_STOP_THRESHOLD = 0.5
 
 @onready var nav: NavigationAgent3D = %NavAgent
 
@@ -32,7 +32,7 @@ func _move_towards_nav_target(delta: float) -> void:
 	nav.velocity = target_velocity
 
 func set_command(command: UnitCommand):
-	if team != Constants.PLAYER_TEAM: return
+	#if team != Constants.PLAYER_TEAM: return
 	
 	if command.type == UnitCommand.Type.MOVE:
 			nav.target_position = command.target_pos

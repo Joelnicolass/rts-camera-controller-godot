@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8807ydqdvh8e"]
+[gd_scene load_steps=9 format=3 uid="uid://8807ydqdvh8e"]
 
 [ext_resource type="Script" path="res://units/Unit.gd" id="1_t407f"]
 [ext_resource type="Script" path="res://selection/UnitSelectable.gd" id="2_dcjhx"]
@@ -12,6 +12,9 @@ material = SubResource("StandardMaterial3D_ibwr6")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jocfr"]
 radius = 0.774279
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g8y3o"]
+radius = 5.00681
 
 [node name="NuevaUndiad" type="CharacterBody3D" groups=["units"]]
 script = ExtResource("1_t407f")
@@ -41,5 +44,13 @@ radius = 0.6
 [node name="WithGravity" type="Node" parent="."]
 script = ExtResource("3_axi4j")
 
-[node name="Action" type="Node" parent="."]
+[node name="Action" type="Node3D" parent="."]
 script = ExtResource("4_eo1m3")
+
+[node name="Distance" type="Area3D" parent="Action"]
+
+[node name="Collider" type="CollisionShape3D" parent="Action/Distance"]
+shape = SubResource("SphereShape3D_g8y3o")
+
+[connection signal="body_entered" from="Action/Distance" to="Action" method="_on_distance_body_entered"]
+[connection signal="body_exited" from="Action/Distance" to="Action" method="_on_distance_body_exited"]

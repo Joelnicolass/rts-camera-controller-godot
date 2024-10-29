@@ -169,8 +169,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90969, -9.68575e-08, 1.7714
 [node name="Unit9" parent="." instance=ExtResource("4_dvawi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40764, 0, 4.6427)
 
+[node name="NuevaUndiad3" parent="." instance=ExtResource("5_ji47i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92023, 0.126731, 1.26913)
+team = 1
+
 [node name="NuevaUndiad2" parent="." instance=ExtResource("5_ji47i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96012, 2.39869, 7.37845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96012, 0.0633655, 7.37845)
 team = 1
 
 [node name="Unit10" parent="." instance=ExtResource("4_dvawi")]
